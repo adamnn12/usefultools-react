@@ -4,6 +4,7 @@ import Calculator from "./tools/Calculator";
 import { Tools } from "./components/types";
 import ColorPicker from "./tools/ColorPicker";
 import UnitConverter from "./tools/UnitConverter";
+import FileConverter from "./tools/FileConverter";
 
 function App() {
   const [view, setView] = useState<Tools>("calculator");
@@ -18,6 +19,7 @@ function App() {
       {view === "calculator" && <Calculator />}
       {view === "converter" && <UnitConverter />}
       {view === "colorpicker" && <ColorPicker />}
+      {view === "fileconverter" && <FileConverter />}
     </div>
   );
 }

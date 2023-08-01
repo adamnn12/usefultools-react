@@ -21,6 +21,10 @@ const Navbar: React.FC<NavbarProps> = ({ onChangeView }) => {
           <Tab label="Calculaltor" value="calculator" />
           <Tab label="Unit Converter" value="converter" />
           <Tab label="Color Picker" value='colorpicker' />
+          <Tab label="File Converter" value='fileconverter' />
+          <Tab label="Currency Converter" value='currencyexchanger' />
+          <Tab label="Time Calculator" value='timecalculator' />
+          <Tab label="Interest Rate Calculator" value='interestratecalculator' />
         </Tabs>
       </AppBar>
     </Box>

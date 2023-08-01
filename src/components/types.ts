@@ -1,4 +1,4 @@
-export type Tools = "calculator" | "converter" | "colorpicker";
+export type Tools = "calculator" | "converter" | "colorpicker" | 'fileconverter' | 'currencyexchanger' | 'timecalculator' | 'interestratecalculator';
 
 export type MeasurementType = "length" | "volume" | "temperature";
 export type LengthUnit =
