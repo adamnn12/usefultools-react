@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Calculator from "./tools/Calculator";
 import { Tools } from "./components/types";
 import ColorPicker from "./tools/ColorPicker";
+import UnitConverter from "./tools/UnitConverter";
 
 function App() {
   const [view, setView] = useState<Tools>("calculator");
@@ -15,7 +16,7 @@ function App() {
     <div>
       <Navbar onChangeView={handleChangeView} />
       {view === "calculator" && <Calculator />}
-      {view === "converter" && <div>About View</div>}
+      {view === "converter" && <UnitConverter />}
       {view === "colorpicker" && <ColorPicker />}
     </div>
   );
