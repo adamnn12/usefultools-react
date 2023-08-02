@@ -5,6 +5,8 @@ import { Tools } from "./components/types";
 import ColorPicker from "./tools/ColorPicker";
 import UnitConverter from "./tools/UnitConverter";
 import FileConverter from "./tools/FileConverter";
+import CurrencyConverter from "./tools/CurrencyConverter";
+import InterestRateCalculator from "./tools/InterestRateCalculator";
 
 function App() {
   const [view, setView] = useState<Tools>("calculator");
@@ -20,6 +22,8 @@ function App() {
       {view === "converter" && <UnitConverter />}
       {view === "colorpicker" && <ColorPicker />}
       {view === "fileconverter" && <FileConverter />}
+      {view === "currencyexchanger" && <CurrencyConverter />}
+      {view === "interestratecalculator" && <InterestRateCalculator />}
     </div>
   );
 }
