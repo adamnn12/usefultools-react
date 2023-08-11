@@ -6,7 +6,7 @@ import {
   ListItem,
   ListItemText,
   Divider
-} from "@material-ui/core";
+} from "@mui/material";
 
 type NavigationDrawerProps = {
   open: boolean;

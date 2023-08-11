@@ -1,60 +1,52 @@
 import React, { useState } from "react";
-import { Button, TextField, Grid, Paper } from "@mui/material";
+import { Button, TextField, Grid, Box } from "@mui/material";
+import * as math from "mathjs";
 
 const Calculator: React.FC = () => {
   const [input, setInput] = useState("");
-  const [firstValue, setFirstValue] = useState<number | null>(null);
-  const [operator, setOperator] = useState<string | null>(null);
+
+  const handleTypedInput = (event: any) => {
+    const newExpression = event.target.value;
+    try {
+      math.parse(newExpression);
+      setInput(newExpression);
+    } catch (e) {
+    }
+  };
 
   const handleNumberClick = (number: number) => {
     setInput(input + number.toString());
   };
 
   const handleOperatorClick = (op: string) => {
-    if (input) {
-      setFirstValue(parseFloat(input));
-      setOperator(op);
-      setInput("");
-    }
+    setInput(input + op);
   };
 
   const handleEqualClick = () => {
-    if (firstValue !== null && operator && input) {
-      let result = 0;
-
-      switch (operator) {
-        case "+":
-          result = firstValue + parseFloat(input);
-          break;
-        case "-":
-          result = firstValue - parseFloat(input);
-          break;
-        case "*":
-          result = firstValue * parseFloat(input);
-          break;
-        case "/":
-          result = firstValue / parseFloat(input);
-          break;
-      }
-
-      setInput(result.toString());
-      setFirstValue(null);
-      setOperator(null);
-    }
+    const result = math.evaluate(input);
+    setInput(result);
   };
 
   const handleClearClick = () => {
     setInput("");
-    setFirstValue(null);
-    setOperator(null);
   };
 
   return (
-    <Paper style={{ padding: "20px" }}>
-      <Grid container spacing={2}>
-        <Grid item xs={12}>
-          <TextField fullWidth value={input} variant="outlined" />
-        </Grid>
+    <Box
+      display={"flex"}
+      justifyContent={"center"}
+      flexDirection={"column"}
+      alignItems={"center"}
+    >
+      <Grid container spacing={1} xs={8} py={3} px={1}>
+        <TextField
+          fullWidth
+          variant="outlined"
+          value={input}
+          onChange={handleTypedInput}
+        />
+      </Grid>
+      <Grid container spacing={1} xs={8}>
         {["1", "2", "3", "+"].map((value, index) => (
           <Grid item xs={3} key={index}>
             <Button
@@ -120,7 +112,7 @@ const Calculator: React.FC = () => {
           </Grid>
         ))}
       </Grid>
-    </Paper>
+    </Box>
   );
 };
 
